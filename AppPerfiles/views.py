@@ -8,7 +8,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import login, authenticate
 
-from perfiles.forms import UserRegisterForm
+from AppPerfiles.forms import UserRegisterForm
 
 def registro(request):
    if request.method == "POST":
@@ -22,7 +22,7 @@ def registro(request):
        formulario = UserRegisterForm()
    return render(
        request=request,
-       template_name='perfiles/registro.html',
+       template_name='AppPerfiles/registro.html',
        context={'form': formulario},
    )
 
@@ -47,10 +47,10 @@ def login_view(request):
        form = AuthenticationForm()
    return render(
        request=request,
-       template_name='perfiles/login.html',
+       template_name='AppPerfiles/login.html',
        context={'form': form},
    )
 
 
 class CustomLogoutView(LogoutView):
-   template_name = 'perfiles/logout.html'
+   template_name = 'AppPerfiles/logout.html'

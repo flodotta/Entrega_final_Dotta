@@ -7,7 +7,7 @@ def inicio(request):
     contexto = {}
     http_response = render(
         request=request,
-        template_name='control_usuarios/index.html',
+        template_name='AppBlog/index.html',
         context=contexto,
     )
     return http_response

@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 
-from control_usuarios.views import listar_escritores , listar_articulos,\
+from AppBlog.views import listar_escritores , listar_articulos,\
     crear_escritor, crear_articulo, buscar_escritor, eliminar_articulo, editar_articulo,\
     LectorListView, LectorCreateView, LectorDetailView, LectorUpdateView , LectorDeleteView 
 

@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
-from control_usuarios.forms import LectorFormulario, EscritorFormulario, ArticuloFormulario
-from control_usuarios.models import Lector, Escritor, Articulo
+from AppBlog.forms import LectorFormulario, EscritorFormulario, ArticuloFormulario
+from AppBlog.models import Lector, Escritor, Articulo
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -15,7 +15,7 @@ def listar_escritores(request):
     }
     http_response = render(
         request=request,
-        template_name='control_usuarios/lista_escritores.html',
+        template_name='AppBlog/lista_escritores.html',
         context=contexto,
     )
     return http_response
@@ -27,7 +27,7 @@ def listar_articulos(request):
     }
     http_response = render(
         request=request,
-        template_name='control_usuarios/lista_articulos.html',
+        template_name='AppBlog/lista_articulos.html',
         context=contexto,
     )
 
@@ -55,7 +55,7 @@ def crear_escritor(request):
         formulario = EscritorFormulario()
     http_response = render(
         request=request,
-        template_name='control_usuarios/formulario_escritor.html',
+        template_name='AppBlog/formulario_escritor.html',
         context={'formulario': formulario}
     )
     return http_response
@@ -82,7 +82,7 @@ def crear_articulo(request):
         formulario = ArticuloFormulario()
     http_response = render(
         request=request,
-        template_name='control_usuarios/formulario_articulo.html',
+        template_name='AppBlog/formulario_articulo.html',
         context={'formulario': formulario}
     )
     return http_response
@@ -99,7 +99,7 @@ def buscar_escritor(request):
        }
        http_response = render(
            request=request,
-           template_name='control_usuarios/lista_escritores.html',
+           template_name='AppBlog/lista_escritores.html',
            context=contexto,
        )
        return http_response
@@ -146,7 +146,7 @@ def editar_articulo(request, id):
        formulario = ArticuloFormulario(initial=inicial)
    return render(
        request=request,
-       template_name='control_usuarios/formulario_articulo.html',
+       template_name='AppBlog/formulario_articulo.html',
        context={'formulario': formulario},
    )
 
@@ -156,7 +156,7 @@ def editar_articulo(request, id):
 #Vistas de Lectores
 class LectorListView(ListView):
     model = Lector
-    template_name = 'control_usuarios/lista_lectores.html' #mismo que le pasaba al render
+    template_name = 'AppBlog/lista_lectores.html' #mismo que le pasaba al render
 
 #Crear un Lector
 

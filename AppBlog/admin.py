@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from control_usuarios.models import Lector, Escritor, Articulo 
+from AppBlog.models import Lector, Escritor, Articulo 
 # Register your models here.
 admin.site.register(Lector)
 admin.site.register(Escritor)

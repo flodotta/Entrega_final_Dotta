@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('control_usuarios', '0004_remove_lector_dni_remove_lector_telefono'),
+        ('AppBlog', '0004_remove_lector_dni_remove_lector_telefono'),
     ]
 
     operations = [
