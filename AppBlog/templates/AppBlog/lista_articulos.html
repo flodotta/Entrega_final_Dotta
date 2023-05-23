@@ -12,8 +12,10 @@
       <tbody>
         <tr>
           <th>ID</th>
-          <th>Nombre</th>
-          <th>Categoria</th>
+          <th>Titulo</th>
+          <th>Subtitulo</th>
+          <th>Cuerpo</th>
+          <th>Autor</th>
           <th>Fecha Publicacion</th>
         </tr>
         {% for articulo in articulos %}
@@ -44,19 +46,3 @@
 {% endblock contenido %}
 
 
-<table class="table">
-  <tbody>
-    <tr>
-      <th>Nombre</th>
-      <th>Categoria</th>
-      <th>Fecha Publicacion</th>
-    </tr>
-    {% for articulo in articulos %}
-    <tr>
-      <td>{{ articulo.nombre }}</td>
-      <td>{{ aarticulo.categoria }}</td>
-      <td>{{ articulo.fecha_publicacion }}</td>
-    </tr> 
-    {% endfor %}
-  </tbody>
-</table>

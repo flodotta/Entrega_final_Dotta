@@ -19,24 +19,24 @@ class ArticuloListView(ListView):
 class ArticuloCreateView(LoginRequiredMixin, CreateView):
     model = Articulo
     fields = ( 'titulo','subtitulo', 'cuerpo', 'autor', 'fecha_publicacion')
-    success_url = reverse_lazy('lista_articulos') #mismo que usaba en url exitosa pero con reverse_lazy
+    success_url = reverse_lazy('listar_articulos') #mismo que usaba en url exitosa pero con reverse_lazy
 
 #Ver Detalle de un Articulo
 #NO Se requiere autentificarse
 class ArticuloDetailView(DetailView):
     model = Articulo
-    succes_url= reverse_lazy('lista_articulos') 
+    succes_url= reverse_lazy('listar_articulos') 
 
 #Editar un Articulo
 #Se requiere autentificarse
 class ArticuloUpdateView(LoginRequiredMixin,UpdateView):
     model = Articulo
     fields = ( 'titulo','subtitulo', 'cuerpo', 'autor', 'fecha_publicacion')
-    success_url = reverse_lazy('lista_articulos')
+    success_url = reverse_lazy('listar_articulos')
 
 #Borrar un Articulo
 #Se requiere autentificarse
 class ArticuloDeleteView(LoginRequiredMixin, DeleteView):
     model = Articulo
-    success_url = reverse_lazy('lista_articulos')   
+    success_url = reverse_lazy('listar_articulos')   
 
