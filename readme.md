@@ -1,4 +1,4 @@
-# ProyectoCoder
+# ProyectoBlog
 
 ## Instrucciones instalar proyecto en local
 + Crea una carpeta contenedora madre
@@ -21,3 +21,6 @@ python3 manage.py createsuperuser
 ```
 127.0.0.1:8000/admin
 ```
+#Admin
+Username: admin
+password: 1234abcd
