@@ -5,13 +5,7 @@
   <div>
     <h1>Lista de Articulos</h1> 
     <a href="{% url 'crear_articulo' %}">Crear Articulo</a>
-<!-- Esto era para mostrar los articulos como una lista, cambie la vista a una tabla
-    <ul>
-    {% for articulo in articulos %}
-      <li>{{ articulo.nombre }}, {{ articulo.categoria }}</li>
-    {% endfor %}
-    </ul>
--->
+
 
 <!--Esto muestra los articulos como una tabla-->
     <table class="table">
@@ -25,8 +19,10 @@
         {% for articulo in articulos %}
         <tr>
           <td>{{ articulo.id }}</td>
-          <td>{{ articulo.nombre }}</td>
-          <td>{{ articulo.categoria }}</td>
+          <td>{{ articulo.titulo }}</td>
+          <td>{{ articulo.subtitulo }}</td>
+          <td>{{ articulo.cuerpo }}</td>
+          <td>{{ articulo.autor }}</td>
           <td>{{ articulo.fecha_publicacion }}</td>
           <td>
           <td>  

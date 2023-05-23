@@ -1,0 +1,24 @@
+{% extends "proyecto_blog/base.html" %}
+
+{% block contenido %}
+
+<p>
+  <strong>Titulo:</strong> {{object.titulo}}
+</p>
+<p>
+  <strong>Subtitulo:</strong> {{object.subtitulo}}
+</p>
+<p>
+  <strong>Cuerpo:</strong> {{object.cuerpo}}
+</p>
+<p>
+    <strong>Autor:</strong> {{object.Autor}}
+  </p>
+<p>
+  <strong>Fecha Publicacion:</strong> {{object.fecha_publicacion}}
+</p>
+
+<br>
+<a href="{% url 'lista_articulos' %}">Volver lista</a>
+
+{% endblock contenido %}
