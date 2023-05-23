@@ -23,6 +23,7 @@ from AppBlog.views import ArticuloListView, ArticuloCreateView,\
 
 urlpatterns = [
     #URL de Articuloes
+    
     #path('Articulos/', listar_Articulos, name= "listar_Articulos"),
     #path('crear-Articulo/', crear_Articulo, name= "crear_Articulo"),
     path("articulos/",ArticuloListView.as_view(),name="listar_articulos"),

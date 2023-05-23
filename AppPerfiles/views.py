@@ -1,15 +1,13 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render, redirect
+from django.shortcuts import render,redirect
 from django.urls import reverse, reverse_lazy
+from AppPerfiles.forms import UserRegisterForm
+
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import login, authenticate
 
-from AppPerfiles.forms import UserRegisterForm
-
+# Create your views here.
 def registro(request):
    if request.method == "POST":
        formulario = UserRegisterForm(request.POST)
@@ -25,6 +23,7 @@ def registro(request):
        template_name='AppPerfiles/registro.html',
        context={'form': formulario},
    )
+
 
 def login_view(request):
    next_url = request.GET.get('next')
@@ -50,7 +49,5 @@ def login_view(request):
        template_name='AppPerfiles/login.html',
        context={'form': form},
    )
-
-
 class CustomLogoutView(LogoutView):
    template_name = 'AppPerfiles/logout.html'

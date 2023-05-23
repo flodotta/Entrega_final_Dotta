@@ -25,4 +25,3 @@ urlpatterns = [
    path('login/', login_view, name="login"),
    path('logout/', CustomLogoutView.as_view(), name="logout")  
 ]
-
