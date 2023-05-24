@@ -18,7 +18,7 @@
           <th>Autor</th>
           <th>Fecha Publicacion</th>
         </tr>
-        {% for articulo in articulos %}
+        {% for articulo in object_list %}
         <tr>
           <td>{{ articulo.id }}</td>
           <td>{{ articulo.titulo }}</td>
