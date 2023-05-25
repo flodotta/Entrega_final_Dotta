@@ -4,7 +4,7 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 
 from AppBlog.models import  Articulo
 
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # #vistas basadas en clases
@@ -15,20 +15,20 @@ class ArticuloListView(ListView):
     template_name = 'AppBlog/lista_articulos.html' #mismo que le pasaba al render
 
 #Crear un Articulo
-#Se requiere autentificarse
+#Se requiere autentificar
 class ArticuloCreateView(LoginRequiredMixin, CreateView):
     model = Articulo
     fields = ( 'titulo','subtitulo', 'cuerpo', 'autor', 'fecha_publicacion')
     success_url = reverse_lazy('listar_articulos') #mismo que usaba en url exitosa pero con reverse_lazy
 
 #Ver Detalle de un Articulo
-#NO Se requiere autentificarse
+#NO Se requiere autentificar
 class ArticuloDetailView(DetailView):
     model = Articulo
     succes_url= reverse_lazy('listar_articulos') 
 
 #Editar un Articulo
-#Se requiere autentificarse
+#Se requiere autentificar
 class ArticuloUpdateView(LoginRequiredMixin,UpdateView):
     model = Articulo
     fields = ( 'titulo','subtitulo', 'cuerpo', 'autor', 'fecha_publicacion')

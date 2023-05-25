@@ -20,6 +20,7 @@ from django.urls import path
 from AppPerfiles.views import registro, login_view, CustomLogoutView
 
 
+
 urlpatterns = [
    path('registro/', registro, name="registro"),
    path('login/', login_view, name="login"),
