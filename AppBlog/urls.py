@@ -22,10 +22,7 @@ from AppBlog.views import ArticuloListView, ArticuloCreateView,\
     ArticuloDetailView, ArticuloUpdateView , ArticuloDeleteView 
 
 urlpatterns = [
-    #URL de Articuloes
-    
-    #path('Articulos/', listar_Articulos, name= "listar_Articulos"),
-    #path('crear-Articulo/', crear_Articulo, name= "crear_Articulo"),
+    #URL de Articulos
     path("articulos/",ArticuloListView.as_view(),name="listar_articulos"),
     path("crear-articulo/",ArticuloCreateView.as_view(),name="crear_articulo"),
     path("Articulos/<int:pk>/",ArticuloDetailView.as_view(),name="ver_articulo"),

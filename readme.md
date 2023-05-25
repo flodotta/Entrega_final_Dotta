@@ -24,3 +24,7 @@ python3 manage.py createsuperuser
 #Admin
 Username: admin
 password: 1234abcd
+
+#usuarios normales: 
+emanuel1
+flo357951

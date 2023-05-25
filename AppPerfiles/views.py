@@ -1,11 +1,14 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse, reverse_lazy
-from AppPerfiles.forms import UserRegisterForm
+from AppPerfiles.forms import UserRegisterForm #, UserUpdateForm, AvatarFormulario
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import login, authenticate
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import UpdateView
 
 # Create your views here.
 def registro(request):
@@ -31,13 +34,13 @@ def login_view(request):
        form = AuthenticationForm(request, data=request.POST)
 
        if form.is_valid():
-           data = form.cleaned_data
+           data = form.cleaned_data #es el diccionario
            usuario = data.get('username')
            password = data.get('password')
-           user = authenticate(username=usuario, password=password)
-           # user puede ser un usuario o None
-           if user:
-               login(request=request, user=user)
+           user = authenticate(username=usuario, password=password) #authenticate es una funcion ayudante de django
+           # user puede ser un usuario o None. None si el usuario si la contraseña esta bien
+           if user: #chequea que user no sea none
+               login(request=request, user=user) #funcion ayudante login
                if next_url:
                    return redirect(next_url)
                url_exitosa = reverse('inicio')
@@ -51,3 +54,32 @@ def login_view(request):
    )
 class CustomLogoutView(LogoutView):
    template_name = 'AppPerfiles/logout.html'
+
+# vista para ver mi perfil
+
+# class MiPerfilUpdateView(LoginRequiredMixin, UpdateView):
+#    form_class = UserUpdateForm
+#    success_url = reverse_lazy('inicio')
+#    template_name = 'perfiles/formulario_perfil.html'
+
+#    def get_object(self, queryset=None):
+#        return self.request.user
+
+#Agregar un avatar a mi perfil
+# def agregar_avatar(request):
+#   if request.method == "POST":
+#       formulario = AvatarFormulario(request.POST, request.FILES) # Aquí me llega toda la info del formulario html
+
+#       if formulario.is_valid():
+#           avatar = formulario.save()
+#           avatar.user = request.user
+#           avatar.save()
+#           url_exitosa = reverse('inicio')
+#           return redirect(url_exitosa)
+#   else:  # GET
+#       formulario = AvatarFormulario()
+#   return render(
+#       request=request,
+#       template_name="perfiles/formulario_avatar.html",
+#       context={'form': formulario},
+#   )
