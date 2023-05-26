@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse, reverse_lazy
-from AppPerfiles.forms import UserRegisterForm #, UserUpdateForm, AvatarFormulario
+from AppPerfiles.forms import UserRegisterForm, UserUpdateForm #, AvatarFormulario
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
@@ -55,15 +55,14 @@ def login_view(request):
 class CustomLogoutView(LogoutView):
    template_name = 'AppPerfiles/logout.html'
 
-# vista para ver mi perfil
+#vista para ver mi perfil
+class MiPerfilUpdateView(LoginRequiredMixin, UpdateView):
+   form_class = UserUpdateForm
+   success_url = reverse_lazy('inicio')
+   template_name = 'AppPerfiles/formulario_perfil.html'
 
-# class MiPerfilUpdateView(LoginRequiredMixin, UpdateView):
-#    form_class = UserUpdateForm
-#    success_url = reverse_lazy('inicio')
-#    template_name = 'perfiles/formulario_perfil.html'
-
-#    def get_object(self, queryset=None):
-#        return self.request.user
+   def get_object(self, queryset=None):
+       return self.request.user
 
 #Agregar un avatar a mi perfil
 # def agregar_avatar(request):

@@ -21,6 +21,10 @@ class ArticuloCreateView(LoginRequiredMixin, CreateView):
     fields = ( 'titulo','subtitulo', 'cuerpo', 'autor', 'fecha_publicacion')
     success_url = reverse_lazy('listar_articulos') #mismo que usaba en url exitosa pero con reverse_lazy
 
+    # def form_valid(self, form):
+    #     form.instance.creador = self.request.user
+    #     return super().form_valid(form)   
+
 #Ver Detalle de un Articulo
 #NO Se requiere autentificar
 class ArticuloDetailView(DetailView):
