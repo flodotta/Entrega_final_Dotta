@@ -1,9 +1,10 @@
 {% extends "AppBlog/base.html" %}
-
+{% load static %}
 {% block contenido %}
-<h1>Acerca de mi </h1>
+<h1>Hola, Soy Flo! </h1>
 
-<p>Hola amigo, tengo que completar esto acerca del creador</p>
+<p>Gracias por visitar mi blog.</p>
+<img src="{% static 'img/Flo.jpg' %}" alt="Imagen de Flo" style="width: 200px; height: 190px;">
 
 
 {% endblock contenido %}
