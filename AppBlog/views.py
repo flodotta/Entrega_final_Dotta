@@ -21,6 +21,7 @@ class ArticuloCreateView(LoginRequiredMixin, CreateView):
     fields = ( 'titulo','subtitulo', 'cuerpo', 'autor', 'fecha_publicacion')
     success_url = reverse_lazy('listar_articulos') #mismo que usaba en url exitosa pero con reverse_lazy
 
+    # Minuto 17 clase 24
     # def form_valid(self, form):
     #     form.instance.creador = self.request.user
     #     return super().form_valid(form)   

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse, reverse_lazy
-from AppPerfiles.forms import UserRegisterForm, UserUpdateForm #, AvatarFormulario
+from AppPerfiles.forms import UserRegisterForm, UserUpdateForm , AvatarFormulario
+from AppPerfiles.models import Avatar
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
@@ -65,20 +66,20 @@ class MiPerfilUpdateView(LoginRequiredMixin, UpdateView):
        return self.request.user
 
 #Agregar un avatar a mi perfil
-# def agregar_avatar(request):
-#   if request.method == "POST":
-#       formulario = AvatarFormulario(request.POST, request.FILES) # Aquí me llega toda la info del formulario html
+def agregar_avatar(request):
+  if request.method == "POST":
+      formulario = AvatarFormulario(request.POST, request.FILES) # Aquí me llega toda la info del formulario html
 
-#       if formulario.is_valid():
-#           avatar = formulario.save()
-#           avatar.user = request.user
-#           avatar.save()
-#           url_exitosa = reverse('inicio')
-#           return redirect(url_exitosa)
-#   else:  # GET
-#       formulario = AvatarFormulario()
-#   return render(
-#       request=request,
-#       template_name="perfiles/formulario_avatar.html",
-#       context={'form': formulario},
-#   )
+      if formulario.is_valid():
+          avatar = formulario.save()
+          avatar.user = request.user
+          avatar.save()
+          url_exitosa = reverse('inicio')
+          return redirect(url_exitosa)
+  else:  # GET
+      formulario = AvatarFormulario()
+  return render(
+      request=request,
+      template_name="AppPerfiles/formulario_avatar.html",
+      context={'form': formulario},
+  )
