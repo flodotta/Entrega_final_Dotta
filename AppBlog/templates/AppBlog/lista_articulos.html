@@ -3,9 +3,14 @@
 {% block contenido %}
 <section>
   <div>
-    <h1>Lista de Articulos</h1> 
-    <a href="{% url 'crear_articulo' %}">Crear Articulo</a>
-
+    <h1>Lista de Articulos</h1>
+    <div style="margin-bottom: 20px;"></div> 
+    <div style="text-align: left;">
+      <button type="button" onclick="window.location.href='{% url 'crear_articulo' %}'">Crear Articulo</a>
+    </div>
+    <div style="margin-bottom: 20px;"></div> 
+    <p>A continuación se pueden encontrar todos los artículos publicados por los usuarios</p>
+    <div style="margin-bottom: 20px;"></div>
 <!--Esto muestra los articulos como una tabla-->
 {% if object_list %}
     <table class="table">
