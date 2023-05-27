@@ -17,7 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from AppPerfiles.views import registro, login_view, CustomLogoutView, MiPerfilUpdateView, agregar_avatar
+from AppPerfiles.views import registro, login_view, CustomLogoutView, MiPerfilUpdateView,\
+    agregar_avatar, modificar_avatar
+
 
 
 
@@ -27,4 +29,5 @@ urlpatterns = [
    path('logout/', CustomLogoutView.as_view(), name="logout"),
    path('profile/', MiPerfilUpdateView.as_view(), name= "editar_perfil"),  
    path('agregar-avatar/', agregar_avatar, name= "agregar_avatar"),  
+   path('modificar-avatar/', modificar_avatar, name= "modificar_avatar"),  
 ]

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse, reverse_lazy
-from AppPerfiles.forms import UserRegisterForm, UserUpdateForm , AvatarFormulario
+from AppPerfiles.forms import UserRegisterForm, UserUpdateForm , AvatarFormulario, AvatarUpdateForm
 from AppPerfiles.models import Avatar
 
 from django.contrib.auth.models import User
@@ -83,3 +83,24 @@ def agregar_avatar(request):
       template_name="AppPerfiles/formulario_avatar.html",
       context={'form': formulario},
   )
+
+#modificar un avatar de mi perfil
+
+def modificar_avatar(request):
+    avatar = request.user.avatar
+
+    if request.method == "POST":
+        formulario = AvatarUpdateForm(request.POST, request.FILES, instance=avatar)
+
+        if formulario.is_valid():
+            avatar = formulario.save()
+            url_exitosa = reverse('inicio')
+            return redirect(url_exitosa)
+    else:  # GET
+        formulario = AvatarUpdateForm(instance=avatar)
+
+    return render(
+        request=request,
+        template_name="AppPerfiles/modificar_avatar.html",
+        context={'form': formulario},
+    )

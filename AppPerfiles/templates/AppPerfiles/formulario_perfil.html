@@ -2,12 +2,18 @@
 
 {% block contenido %}
 <h3>Tu username es : <b>{{ object.username }}</b></h3>
+<h5>Tu Avatar es: <img src="{{ user.avatar.imagen.url }}" /></h5>
 <div style="margin-bottom: 20px;"></div>
 <h5>Editar datos:</h5>
 <div style="margin-bottom: 20px;"></div>
 <form method="post">
  {% csrf_token %}
  {{ form.as_p }}
- <input type="submit" value="Salvar"/>
+ <input type="submit" value="Modificar datos"/>
 </form>
+<div style="margin-bottom: 40px;"></div>
+<div style="margin-bottom: 20px;"></div>
+<h5>Editar Avatar:</h5>
+<button type="button" onclick="window.location.href='{% url 'modificar_avatar' %}'">Modificar Avatar</a>
+
 {% endblock contenido %}

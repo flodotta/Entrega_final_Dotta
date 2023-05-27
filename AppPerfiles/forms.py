@@ -26,4 +26,9 @@ class AvatarFormulario(forms.ModelForm):
        model = Avatar
        fields = ['imagen']
 
+#Creo un formulario para modificar un Avatar
+class AvatarUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Avatar
+        fields = ['imagen']
        
