@@ -53,3 +53,8 @@ class ArticuloDeleteView(LoginRequiredMixin, DeleteView):
     model = Articulo
     success_url = reverse_lazy('listar_articulos')   
 
+    def form_valid(self, form):
+        if self.request.user != self.object.user:
+            form.add_error(None, "No tienes los permisos necesarios para realizar esta acción.")
+            return super().form_invalid(form)
+        return super().form_valid(form) 
