@@ -13,8 +13,9 @@ class Articulo(models.Model):
     autor = models.CharField(max_length=256)
     fecha_publicacion = models.DateField(null=True)
     #agrego el modo creador para que registre quien fue el creador
-    creador = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-  
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+
   #le agrego el método mágico str para visualizarlo bien en el panel admin
     def __str__(self):
         return f"{self.titulo}, {self.autor}, {self.fecha_publicacion}"

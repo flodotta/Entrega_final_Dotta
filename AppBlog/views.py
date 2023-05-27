@@ -21,10 +21,10 @@ class ArticuloCreateView(LoginRequiredMixin, CreateView):
     fields = ( 'titulo','subtitulo', 'cuerpo', 'autor', 'fecha_publicacion')
     success_url = reverse_lazy('listar_articulos') #mismo que usaba en url exitosa pero con reverse_lazy
 
-    # Minuto 17 clase 24
-    # def form_valid(self, form):
-    #     form.instance.creador = self.request.user
-    #     return super().form_valid(form)   
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 
 #Ver Detalle de un Articulo
 #NO Se requiere autentificar
@@ -34,11 +34,19 @@ class ArticuloDetailView(DetailView):
 
 #Editar un Articulo
 #Se requiere autentificar
+
 class ArticuloUpdateView(LoginRequiredMixin,UpdateView):
     model = Articulo
     fields = ( 'titulo','subtitulo', 'cuerpo', 'autor', 'fecha_publicacion')
     success_url = reverse_lazy('listar_articulos')
 
+   # Minuto 17 clase 24
+    def form_valid(self, form):
+        if self.request.user != self.object.user:
+            form.add_error(None, "No tienes los permisos necesarios para realizar esta acción.")
+            return super().form_invalid(form)
+        return super().form_valid(form) 
+    
 #Borrar un Articulo
 #Se requiere autentificarse
 class ArticuloDeleteView(LoginRequiredMixin, DeleteView):
