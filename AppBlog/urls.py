@@ -23,9 +23,9 @@ from AppBlog.views import ArticuloListView, ArticuloCreateView,\
 
 urlpatterns = [
     #URL de Articulos
-    path("articulos/",ArticuloListView.as_view(),name="listar_articulos"),
+    path("pages/",ArticuloListView.as_view(),name="listar_articulos"),
     path("crear-articulo/",ArticuloCreateView.as_view(),name="crear_articulo"),
-    path("Articulos/<int:pk>/",ArticuloDetailView.as_view(),name="ver_articulo"),
+    path("pages/<int:pk>/",ArticuloDetailView.as_view(),name="ver_articulo"),
     path("editar-articulo/<int:pk>/",ArticuloUpdateView.as_view(),name="editar_articulo"),
     path("eliminar-articulo/<int:pk>/",ArticuloDeleteView.as_view(),name="eliminar_articulo")
 ]

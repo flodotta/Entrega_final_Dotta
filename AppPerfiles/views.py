@@ -24,7 +24,7 @@ def registro(request):
        formulario = UserRegisterForm()
    return render(
        request=request,
-       template_name='AppPerfiles/registro.html',
+       template_name='AppPerfiles/signup.html',
        context={'form': formulario},
    )
 

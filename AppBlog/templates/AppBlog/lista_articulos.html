@@ -9,10 +9,11 @@
       <button type="button" onclick="window.location.href='{% url 'crear_articulo' %}'">Crear Articulo</a>
     </div>
     <div style="margin-bottom: 20px;"></div> 
-    <p>A continuación se pueden encontrar todos los artículos publicados por los usuarios</p>
-    <div style="margin-bottom: 20px;"></div>
+
 <!--Esto muestra los articulos como una tabla-->
 {% if object_list %}
+<p>A continuación se pueden encontrar todos los artículos publicados por los usuarios</p>
+<div style="margin-bottom: 20px;"></div>
     <table class="table">
       <tbody>
         <tr>
@@ -29,6 +30,9 @@
           <td>{{ articulo.fecha_publicacion }}</td>
           <td>
           <td>
+            <a href="{% url 'ver_articulo' articulo.id %}">Leer más</a>
+          </td>
+          <td>
           <a href={%url 'editar_articulo' articulo.id %}>Editar</a> 
           </td>
           <td>
@@ -44,7 +48,7 @@
       </tbody>
     </table>
 {% else %}
-  <p>No hay artículos disponibles.</p>
+  <p>No hay artículos cargados aún.</p>
 {% endif %}
 
 
