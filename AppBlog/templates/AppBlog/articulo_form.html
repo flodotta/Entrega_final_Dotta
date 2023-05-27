@@ -2,6 +2,9 @@
 
 {% block contenido %}
 
+
+<h3>Crea tu artículo  , {{user.username}} :  </h3>
+<p>Gracias por compartir tu artículo en nuestro blog.</p>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}

@@ -10,14 +10,14 @@ class UserRegisterForm(UserCreationForm):
 
    class Meta:
        model = User
-       fields = ['last_name', 'first_name', 'username', 'email', 'password1', 'password2']
+       fields = ['last_name','first_name', 'username', 'email', 'password1', 'password2']
 
 #Defino una clase para editar usuario
 
 class UserUpdateForm(forms.ModelForm):
    class Meta:
         model = User
-        fields = ['last_name', 'first_name', 'email']
+        fields = ['last_name', 'first_name','email']
 
 # Agrego la clase Avatar
 class AvatarFormulario(forms.ModelForm):
