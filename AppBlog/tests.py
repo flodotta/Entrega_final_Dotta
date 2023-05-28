@@ -12,7 +12,6 @@ class ArticuloTests(TestCase):
        # caso uso esperado
        articulo = Articulo(titulo="Titulo", subtitulo="Subtitulo", cuerpo="Cuerpo", autor="Autor", fecha_publicacion="2023-05-10")
        articulo.save()
-  #'''user '''
     #agrego el modo creador para que registre quien fue el creador
     
 

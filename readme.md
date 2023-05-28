@@ -26,5 +26,8 @@ Username: admin
 password: 1234abcd
 
 #usuarios normales: 
-emanuel1
-flo357951
+    user1
+    flo357951
+
+    user2
+    flo357951
