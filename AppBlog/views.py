@@ -43,7 +43,7 @@ class ArticuloUpdateView(LoginRequiredMixin,UpdateView):
    # Minuto 17 clase 24
     def form_valid(self, form):
         if self.request.user != self.object.user:
-            form.add_error(None, "No tienes los permisos necesarios para realizar esta acción.")
+            form.add_error(None, "No tienes los permisos necesarios para realizar esta acción. Debes ser el usuario creador para poder editar.")
             return super().form_invalid(form)
         return super().form_valid(form) 
     
@@ -55,6 +55,6 @@ class ArticuloDeleteView(LoginRequiredMixin, DeleteView):
 
     def form_valid(self, form):
         if self.request.user != self.object.user:
-            form.add_error(None, "No tienes los permisos necesarios para realizar esta acción.")
+            form.add_error(None, "No tienes los permisos necesarios para realizar esta acción. Debes ser el usuario creador para poder eliminar.")
             return super().form_invalid(form)
         return super().form_valid(form) 
