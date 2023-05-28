@@ -11,47 +11,44 @@
     <div style="margin-bottom: 20px;"></div> 
 
 <!--Esto muestra los articulos como una tabla-->
-{% if object_list %}
-<p>A continuación se pueden encontrar todos los artículos publicados por los usuarios</p>
-<div style="margin-bottom: 20px;"></div>
-    <table class="table">
-      <tbody>
-        <tr>
-          <th>ID</th>
-          <th>Titulo</th>
-          <th>Autor</th>
-          <th>Fecha Publicacion</th>
-        </tr>
-        {% for articulo in object_list %}
-        <tr>
-          <td>{{ articulo.id }}</td>
-          <td>{{ articulo.titulo }}</td>
-          <td>{{ articulo.autor }}</td>
-          <td>{{ articulo.fecha_publicacion }}</td>
-          <td>
-          <td>
-            <a href="{% url 'ver_articulo' articulo.id %}">Leer más</a>
-          </td>
-          <td>
-          <a href={%url 'editar_articulo' articulo.id %}>Editar</a> 
-          </td>
-          <td>
-            <a href="{% url 'eliminar_articulo' articulo.id %}">
-              <i class="bi bi-trash"></i>
-            </a>
-            <form action="{% url 'eliminar_articulo' articulo.id %}" method="post">
-              {% csrf_token %}
-            </form>
-          </td>
-        </tr> 
-        {% endfor %}
-      </tbody>
-    </table>
-{% else %}
-  <p>No hay artículos cargados aún.</p>
-{% endif %}
-
-
+    {% if object_list %}
+      <p>A continuación se pueden encontrar todos los artículos publicados por los usuarios</p>
+      <div style="margin-bottom: 20px;"></div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Fecha Publicacion</th>
+          </tr>
+          {% for articulo in object_list %}
+            <tr>
+              <td>{{ articulo.id }}</td>
+              <td>{{ articulo.titulo }}</td>
+              <td>{{ articulo.autor }}</td>
+              <td>{{ articulo.fecha_publicacion }}</td>
+              <td>
+                <a href="{% url 'ver_articulo' articulo.id %}">Leer más</a>
+                {% if articulo.user == request.user %}
+                  <a href={%url 'editar_articulo' articulo.id %}>Editar</a> 
+                  <a href="{% url 'eliminar_articulo' articulo.id %}">
+                    <i class="bi bi-trash"></i> 
+                  </a>
+                  <form action="{% url 'eliminar_articulo' articulo.id %}" method="post">
+                    {% csrf_token %}
+                  </form>
+                {% else %}
+                  
+                {% endif%}
+              </td>
+            </tr> 
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No hay artículos cargados aún.</p>
+    {% endif %}
   </div>
 </section>
 {% endblock contenido %}
